@@ -5,11 +5,6 @@ const writeStream = fs.createWriteStream('data.csv')
 
 var url = 'https://www.bondfaro.com.br/cprocura?keyword=shampoo+loreal+silver+expert++300ml'
 
-const ScrapyResult = {
-    title: '',
-    price: '',
-    time: Date.now()
-}
 
 const Scrapy = async () => {
     try{
@@ -27,8 +22,7 @@ const Scrapy = async () => {
                const urlText = $(urlTitle).text()
                const urlValor = $(urlPrice).text()
                const urlSeller = $(urlLoja).text()
-               result.push(urlSeller, urlText, urlValor)               
-               //console.log(result)
+               result.push(urlSeller, urlText, urlValor)           
                writeStream.write(`${result}\n`)
            }
        }       
