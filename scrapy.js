@@ -1,3 +1,7 @@
+//###########################################
+//###########SCRAPY######BONDFARO############
+//###########################################
+
 const cheerio = require('cheerio')
 const fs = require('fs')
 const request = require('request-promise')
@@ -22,8 +26,9 @@ const Scrapy = async () => {
                const urlText = $(urlTitle).text()
                const urlValor = $(urlPrice).text()
                const urlSeller = $(urlLoja).text()
-               result.push(urlSeller, urlText, urlValor)           
-               writeStream.write(`${result}\n`)
+               result.push(urlSeller, urlText, urlValor)               
+               //console.log(result)
+               writeStream.write(`${new Date()} ,${result}\n`)
            }
        }       
        
@@ -32,55 +37,3 @@ const Scrapy = async () => {
     }
 }
 Scrapy()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*var url = 'https://www.bondfaro.com.br/'
-request(url, (err, res, html) => {
-    if(!err){
-        var $ = cheerio.load(html)
-        var tab = $('.ofr-new', ).text().trim()
-        var outro = $('.value' ).text().trim()
-        var price = $(this).attr('href')
-        var list = $('p.price').text().trim()
-           
-    } 
-       
-                
-        console.log(list)
-})
-      */ 
-
-
